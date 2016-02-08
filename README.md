@@ -1,6 +1,7 @@
-# Swift Informant - [![Build Status](http://drone.ronin.io/github.com/pandemicsyn/swift-informant/status.svg?branch=master)](http://drone.ronin.io/github.com/pandemicsyn/swift-informant)
+# Middleware to time OpenStack requests
 
-Swift Proxy Middleware to send events to a [statsd](http://github.com/etsy/statsd/ "statsd") instance.
+OpenStack Middleware to send events to a [statsd](http://github.com/etsy/statsd/ "statsd") instance.
+Borrowed most code from: https://github.com/pandemicsyn/swift-informant
 
 **After** the request has been serviced (using a event posthook) it will fire a statsd counter incrementing the request method's status code.  It breaks these up by whether the request was an operation on an Account, Container, or an Object. In addition to the counter, two timer event's are fired for the request duration as well as time until start_response was seen. If present a counter for bytes transferred is included as well.
 
@@ -31,8 +32,6 @@ And add the following filter config:
     # statsd_sample_rate = 0.5
     # list of allowed methods, all others will generate a "BAD_METHOD" event
     # valid_http_methods = GET,HEAD,POST,PUT,DELETE,COPY
-    # send multiple statsd events per packet as supported by statsdpy
-    # combined_events = no
     # They key used to combine events for reporting to statsd, alternate
     # versions used a # to seperate events. The offical way is by newline
     # combine_key = \n
@@ -42,9 +41,7 @@ And add the following filter config:
     # This lets you track metrics for specific accounts independently.
     # prefix_accounts = AUTH_something,
 
-The commented out values are the defaults. This module does not require any additional statsd client modules. 
-
-**To utilize combined_events you'll need to run a statsd server that supports mulitple events per packet such as [statsdpy](https://github.com/pandemicsyn/statsdpyd)**
+The commented out values are the defaults. This module does not require any additional statsd client modules.
 
 # Building packages
 

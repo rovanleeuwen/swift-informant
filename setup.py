@@ -7,12 +7,12 @@ name = "informant"
 setup(
     name = name,
     version = version,
-    author = "Florian Hines",
-    author_email = "syn@ronin.io",
-    description = "Informant",
+    author = "Robert van Leeuwen",
+    author_email = "rovanleeuwen@ebay.com",
+    description = "Informant forked from swift-informant from Florian Hines",
     license = "Apache License, (2.0)",
-    keywords = "openstack swift middleware",
-    url = "http://github.com/pandemicsyn/swift-informant",
+    keywords = "openstack middleware for statsd data",
+    url = "http://github.com/rovanleeuwen/informant",
     packages=find_packages(),
     classifiers=[
         'Development Status :: 4 - Beta',
